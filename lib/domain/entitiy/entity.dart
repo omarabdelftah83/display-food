@@ -1,11 +1,17 @@
 
 //$//
+//onBoarding model//
 class SliderObj {
   String title;
   String subTitle;
   String image;
 
   SliderObj(this.title, this.subTitle, this.image);
+}
+class SliderViewObj{
+ SliderObj sliderObj;
+  int numOfSlides;
+  SliderViewObj(this.sliderObj,this.numOfSlides);
 }
 
 class Customer {

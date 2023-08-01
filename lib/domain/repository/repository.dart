@@ -8,5 +8,6 @@ import '../entitiy/entity.dart';
 
 
 abstract class BaseRepository{
-  Future<Either<Failure,Authentication>>  login(LoginRequest loginRequest);
+
+  Future<Either<Failure,Authentication>>  login(LoginRequest loginRequest );
 }

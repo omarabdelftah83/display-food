@@ -8,6 +8,7 @@ part 'response.g.dart';
 ///create replacing fromJson///
 @JsonSerializable()
 class BaseResponse {
+
   @JsonKey(name: "status")
   int? status;
   @JsonKey(name: "message")
@@ -56,7 +57,7 @@ class AuthenticationResponse extends BaseResponse {
   @JsonKey(name: "contacts")
   ContactResponse? contact;
 
-  AuthenticationResponse(this.contact, this.customer);
+  AuthenticationResponse(this.customer, this.contact);
 
   ///from json//
   factory AuthenticationResponse.fromJson(Map<String, dynamic> json) =>

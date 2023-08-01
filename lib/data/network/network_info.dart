@@ -6,7 +6,8 @@ abstract class NetWorkInf{
 class NetWorkInfImp extends NetWorkInf{
 
 final  InternetConnectionChecker _internetConnectionChecker;
-NetWorkInfImp(this._internetConnectionChecker);
+
+  NetWorkInfImp(this._internetConnectionChecker);
   @override
   // TODO: implement isConnected
 

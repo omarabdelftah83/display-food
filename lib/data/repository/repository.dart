@@ -1,8 +1,8 @@
-
 ////$$$$$///
 import 'package:dartz/dartz.dart';
 import 'package:mina/data/datasourse/remote_data_sourse.dart';
 import 'package:mina/data/mapper/mapper.dart';
+import 'package:mina/data/network/error_handle.dart';
 import 'package:mina/data/network/falier.dart';
 import 'package:mina/data/network/requests.dart';
 import 'package:mina/domain/entitiy/entity.dart';
@@ -17,22 +17,32 @@ class Repository implements BaseRepository {
   Repository(this._remoteDataSource, this._netWorkInf);
 
   @override
-  Future<Either<Failure, Authentication>> login(LoginRequest loginRequest)async {
+  Future<Either<Failure, Authentication>> login(LoginRequest loginRequest) async {
 
-  if(await _netWorkInf.isConnected){
-   final response= await _remoteDataSource.loginDataSource(loginRequest);
 
-   if(response.status==0){
-     ///success///return data
-   return  right(response.toDomain());
-   }else{
-     ////error///return error
-     return left(Failure(409, response.message??'error'));
-   }
+    if (await _netWorkInf.isConnected) {
+      try {
+        ///add (try & catch) after handle code///
+        /// for him try & catch because Dio use //
+        final response = await _remoteDataSource.loginDataSource(loginRequest);
 
-  }
-  else{
- return left(Failure(501, 'please check your internet'));
-  }
+        if (response.status == ApiInternal.SUCCESS) {
+          ///success///return data
+          return right(response.toDomain());
+        } else {
+          ////error///return error//يعتبر ملهاش لازمه//
+          return left(Failure(ApiInternal.FAILURE,
+              response.message ?? ResponseMessage.DEFAULT));
+        }
+      } catch (error) {
+        ///handle code//return error
+        return left(ErrorHandle.handle(error).failure);
+      }
+
+
+
+    } else {
+      return left(DataSource.NO_INTERNET_CONNECTION.getFailure());
+    }
   }
 }

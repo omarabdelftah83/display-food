@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:mina/app/constant.dart';
+import 'package:mina/data/network/dio_factory.dart';
 import 'package:retrofit/http.dart';
 
 import '../response/response.dart';
@@ -10,6 +11,7 @@ part 'app_api.g.dart';
 
 @RestApi(baseUrl: Constant.baseUrl)
 abstract class AppServiceClient {
+///I want to come back instance in dio///
   factory AppServiceClient(Dio dio, {String baseUrl}) = _AppServiceClient;
 
   @POST("/customer/login")

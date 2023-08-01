@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:mina/presention/for_get_password/for_get_password.dart';
 import 'package:mina/presention/login/login.dart';
 import 'package:mina/presention/main/main.dart';
-import 'package:mina/presention/onBoarding/onboarding_view.dart';
+import 'package:mina/presention/onBoarding/view/onboarding_view.dart';
 import 'package:mina/presention/register/register.dart';
 import 'package:mina/presention/resources/string_manager.dart';
 import 'package:mina/presention/splash/splach_view.dart';

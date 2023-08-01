@@ -1,8 +1,9 @@
 
 import 'package:flutter/material.dart';
-import 'package:mina/presention/onBoarding/onboarding_view.dart';
 import 'package:mina/presention/resources/valuies_manager.dart';
 import 'package:mina/presention/widget/slider_obj.dart';
+
+import '../../../domain/entitiy/entity.dart';
 
 class OnBeardingPageBody extends StatelessWidget {
   final SliderObj _sliderObj;

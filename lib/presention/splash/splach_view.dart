@@ -74,7 +74,7 @@ class _SplashViewState extends State<SplashView>
                         TextStyle(fontSize: FontSize.s30, color: Colors.white),
                   )));
             },
-          )
+          ),
         ],
       ),
     );
