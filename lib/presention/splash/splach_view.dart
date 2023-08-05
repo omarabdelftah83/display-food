@@ -28,8 +28,8 @@ class _SplashViewState extends State<SplashView>
 ///animation function//
   void initAnimation() {
     animationController =
-        AnimationController(vsync: this, duration: Duration(seconds: 2));
-    animation = Tween<Offset>(begin: Offset(0, 2), end: Offset.zero)
+        AnimationController(vsync: this, duration: const Duration(seconds: 1));
+    animation = Tween<Offset>(begin: const Offset(0, 2), end: Offset.zero)
         .animate(animationController);
     animationController.forward();
   }

@@ -1,13 +1,15 @@
 
 import 'package:flutter/material.dart';
 import 'package:mina/presention/for_get_password/for_get_password.dart';
-import 'package:mina/presention/login/login.dart';
+import 'package:mina/presention/login/view/login.dart';
 import 'package:mina/presention/main/main.dart';
 import 'package:mina/presention/onBoarding/view/onboarding_view.dart';
 import 'package:mina/presention/register/register.dart';
 import 'package:mina/presention/resources/string_manager.dart';
 import 'package:mina/presention/splash/splach_view.dart';
 import 'package:mina/presention/store_datiles/store_detailes.dart';
+
+import '../../app/di.dart';
 
 class Routes{
   static const String splashRoute='/';
@@ -27,6 +29,7 @@ class RouteGenarator{
      case Routes.onBoardingRoute:
        return MaterialPageRoute(builder: (_) =>onBoardingView());
      case Routes.loginRoute:
+     //  loginModule();
        return MaterialPageRoute(builder: (_)=>LoginView());
      case Routes.registerRoute:
        return MaterialPageRoute(builder: (_)=>RegisterView());

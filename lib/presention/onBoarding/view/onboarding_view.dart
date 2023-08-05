@@ -16,114 +16,133 @@ class onBoardingView extends StatefulWidget {
   @override
   State<onBoardingView> createState() => _onBoardingViewState();
 }
+
 class _onBoardingViewState extends State<onBoardingView> {
-  final OnBoardingViewModel _viewModel= OnBoardingViewModel();
+  //final OnBoardingViewModel _viewModel= OnBoardingViewModel();
 
-  late  PageController _pageController = PageController();
+  late PageController _pageController = PageController();
+  late final List<SliderObj> _list = _getSliderObj();
 
+  List<SliderObj> _getSliderObj() => [
+        SliderObj(AppString.onBoardingTitle1, AppString.onBoardingSubTitle1,
+            ImagePath.onBoardingLogo1),
+        SliderObj(AppString.onBoardingTitle2, AppString.onBoardingSubTitle2,
+            ImagePath.onBoardingLogo1),
+        SliderObj(AppString.onBoardingTitle3, AppString.onBoardingSubTitle3,
+            ImagePath.onBoardingLogo1),
+        SliderObj(AppString.onBoardingTitle4, AppString.onBoardingSubTitle4,
+            ImagePath.onBoardingLogo1),
+      ];
 
-  _bind(){
-    _viewModel.start();
-  }
+  // _bind(){
+  //   _viewModel.start();
+  // }
 
   @override
   void initState() {
-    // TODO: implement initState
-    _pageController=PageController(initialPage: 0);
-    _bind();
+    _pageController = PageController(initialPage: 0);
+    //  _bind();
   }
+
   @override
   void dispose() {
-   _pageController.dispose();
-  // _viewModel.dispose();
+    _pageController.dispose();
+    //  _viewModel.dispose();
     super.dispose();
   }
+
   @override
   Widget build(BuildContext context) {
-    return StreamBuilder<SliderViewObj>(
-        stream: _viewModel.outputSliderViewModel,
-        builder:(context,snapshot){
-          return _getContentWidget(snapshot.data);
-        } );
-
-
-
-
-  }
-
-   _getContentWidget(SliderViewObj? sliderViewObj){
-    if(sliderViewObj==null){
-      return Container();
-    }else{
-      return  Scaffold(
-        ///body///
-        body: Column(
-          children: [
-            Expanded(
-              child: PageView.builder(
-
-                controller: _pageController,
-                itemCount:sliderViewObj.numOfSlides ,
-                itemBuilder: (context, index) {
-                  return OnBeardingPageBody(sliderViewObj.sliderObj);
-                },
-              ),
+    return Scaffold(
+      ///body///
+      body: Column(
+        children: [
+          Expanded(
+            child: PageView.builder(
+              controller: _pageController,
+              itemCount: _list.length,
+              itemBuilder: (context, index) {
+                return OnBeardingPageBody(_list[index]);
+              },
             ),
+          ),
+        ],
+      ),
 
-          ],
-        ),
-
-        ///bottom sheet///
-        bottomSheet: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Container(
-            color: Colors.orangeAccent,
-            height: AppSize.s80,
-            //decoration: BoxDecoration(borderRadius: BorderRadius.circular(10)),
-            child: Column(
-              children: [
-                Align(
-                  alignment: Alignment.bottomRight,
-                  child: TextButton(
-                    onPressed: () {
-                      Navigator.pushReplacementNamed(context, Routes.loginRoute);
-                    },
-                    child: const Text(
-                      AppString.skip,
-                      textAlign: TextAlign.end,
-                    ),
+      ///bottom sheet///
+      bottomSheet: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Container(
+          color: Colors.orangeAccent,
+          height: AppSize.s80,
+          child: Column(
+            children: [
+              Align(
+                alignment: Alignment.bottomRight,
+                child: TextButton(
+                  onPressed: () {
+                    Navigator.pushReplacementNamed(context, Routes.loginRoute);
+                  },
+                  child: const Text(
+                    AppString.skip,
+                    textAlign: TextAlign.end,
                   ),
                 ),
-
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: List.generate(
-                      4,
-                          (index) => Container(
-                          width: 7,
-                          height: 7,
-                          margin: const EdgeInsets.symmetric(horizontal: 20),
-                          decoration: BoxDecoration(
-                              shape: BoxShape.circle,
-                              color: index == 0
-                                  ? Colors.greenAccent
-                                  : index == 1
-                                  ? Colors.white
-                                  : Colors.pink))),
-                )
-              ],
-            ),
-
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: List.generate(
+                    4,
+                    (index) => Container(
+                        width: 7,
+                        height: 7,
+                        margin: const EdgeInsets.symmetric(horizontal: 20),
+                        decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                            color: index == 0
+                                ? Colors.greenAccent
+                                : index == 1
+                                    ? Colors.white
+                                    : Colors.pink))),
+              )
+            ],
           ),
         ),
-      );
-    }
-
-  }}
-
-
+      ),
+    );
+  }
+}
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//   StreamBuilder<SliderViewObj>(
+// stream: _viewModel.outputSliderViewModel,
+// builder:(context,snapshot){
+//   return _getContentWidget(snapshot.data);
+// } );
+
+//  _getContentWidget(SliderViewObj? sliderViewObj){
+//   if(sliderViewObj==null){
+//     return Container();
+//   }else{
+//  Scaffold......
+//   }
+//
+// }
 
 
 
@@ -193,48 +212,12 @@ class _onBoardingViewState extends State<onBoardingView> {
 // }
 //
 
-
-
 ///appbar///
 // appBar: AppBar(
 //   backgroundColor: Colors.white,
 //   systemOverlayStyle: const SystemUiOverlayStyle(
 //       statusBarColor: Colors.white, statusBarBrightness: Brightness.dark),
 // ),
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 ///three point ///
 //  Row(

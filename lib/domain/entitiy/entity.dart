@@ -13,7 +13,7 @@ class SliderViewObj{
   int numOfSlides;
   SliderViewObj(this.sliderObj,this.numOfSlides);
 }
-
+//api//
 class Customer {
   String id;
   String name;

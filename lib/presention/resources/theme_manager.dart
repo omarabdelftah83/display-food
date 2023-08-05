@@ -55,7 +55,7 @@ ThemeData getAppTheme() {
 
         ///enabledBorder///
         enabledBorder: OutlineInputBorder(
-          borderSide: BorderSide(color: Colors.orange, width: 1.5),
+          borderSide: BorderSide(color: Colors.grey, width: 1.5),
           borderRadius: BorderRadius.all(Radius.circular(8)),
         ),
 
@@ -72,9 +72,9 @@ ThemeData getAppTheme() {
             borderRadius: BorderRadius.all(Radius.circular(8))),
 
 
-        ///focusedErrorBorder///
+        ///focusedErrorBorder///out
         focusedErrorBorder:  OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.deepOrange, width: 1.5),
+            borderSide: BorderSide(color: Colors.red, width: 1.5),
             borderRadius: BorderRadius.all(Radius.circular(8))),
       ));
 }

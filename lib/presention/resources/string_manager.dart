@@ -18,4 +18,11 @@ class AppString {
       'Tut app is a awesome flutter application using clean arc #5';
   static const String skip =
       'Skip';
+  static const username = "Username";
+  static const password = "Password";
+  static const usernameError = "Please enter your userName";
+  static const passwordError = "Please enter your password";
+  static const login = "Login";
+  static const forgetPassword = "Forget password";
+  static const registerText = "Not a member ? Sign up";
 }

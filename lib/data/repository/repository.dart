@@ -10,11 +10,11 @@ import 'package:mina/domain/repository/repository.dart';
 
 import '../network/network_info.dart';
 
-class Repository implements BaseRepository {
+class RepositoryImp implements BaseRepository {
   final RemoteDataSource _remoteDataSource;
   final NetWorkInf _netWorkInf;
 
-  Repository(this._remoteDataSource, this._netWorkInf);
+  RepositoryImp(this._remoteDataSource, this._netWorkInf);
 
   @override
   Future<Either<Failure, Authentication>> login(LoginRequest loginRequest) async {
@@ -30,10 +30,11 @@ class Repository implements BaseRepository {
           ///success///return data
           return right(response.toDomain());
         } else {
-          ////error///return error//يعتبر ملهاش لازمه//
+          ////error///return error//
           return left(Failure(ApiInternal.FAILURE,
               response.message ?? ResponseMessage.DEFAULT));
         }
+
       } catch (error) {
         ///handle code//return error
         return left(ErrorHandle.handle(error).failure);
