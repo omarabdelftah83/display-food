@@ -1,5 +1,7 @@
 
 ////$$$$///
+import 'dart:developer';
+
 import '../network/app_api.dart';
 import '../network/requests.dart';
 import '../response/response.dart';
@@ -18,8 +20,15 @@ class RemoteDataSourceImpl extends RemoteDataSource{
 
   @override
   Future<AuthenticationResponse> loginDataSource(LoginRequest loginRequest) async{
+    AuthenticationResponse ttppppp;
+    try{
 
- return  await _appServiceClient.loginApi(loginRequest.email, loginRequest.password);
+         ttppppp =await _appServiceClient.loginApi(loginRequest.email, loginRequest.password);
 
+     }catch(e,str){
+       log("=======$e===$str=");
+      throw Exception("catch loginDataSource");
+     }
+    return ttppppp;
   }
 }

@@ -1,9 +1,14 @@
 import 'dart:async';
+import 'dart:developer';
 
+import 'package:flutter/material.dart';
 import 'package:mina/presention/base/base_view_Model.dart';
+import 'package:mina/presention/common/state_renderer/state_renderer.dart';
+import 'package:mina/presention/common/state_renderer/state_renderer_imp.dart';
 
 import '../../../domain/usercase/login_usecase.dart';
-import '../../common/freezed_data_classes.dart';
+import '../../common/data_classes/freezed_data_classes.dart';
+import 'package:mina/presention/resources/routes_manager.dart';
 
 class LoginViewModel extends BaseViewModel
     with LoginViewModelInputs, LoginViewModelOutputs {
@@ -13,26 +18,33 @@ class LoginViewModel extends BaseViewModel
       StreamController<String>.broadcast();
   final StreamController _areAllInputValidStreamController =
       StreamController<void>.broadcast();
+  StreamController isUsedLoggerInSuccessStreamController =
+      StreamController<bool>.broadcast();
 
   ///___dataClasses___//
   var loginObject = LoginObject('', '');
 
   ///useCase//
-  //final LoginUseCase _loginUseCase;
+  final LoginUseCase _loginUseCase;
 
-  LoginViewModel();
+  LoginViewModel(this._loginUseCase);
 
   ///inputs///
   @override
   void dispose() {
+    //dispose in base//
+    super.dispose();
+
     _userNameStreamController.close();
     _passwordStreamController.close();
     _areAllInputValidStreamController.close();
+    isUsedLoggerInSuccessStreamController.close();
   }
 
   @override
   void start() {
-    // TODO: implement start
+    ///base==>show content after login//
+    inputState.add(ContentState());
   }
 
   @override
@@ -46,23 +58,27 @@ class LoginViewModel extends BaseViewModel
 
   @override
   login() async {
-    // (await _loginUseCase.execute(
-    //         LoginUseCaseInput(loginObject.userName, loginObject.password)))
-    //     .fold(
-    //         (left) => {
-    //               //return failure
-    //               print(left.message)
-    //             },
-    //         (right) => {
-    //               //return success
-    //               print(right.contacts)
-    //             });
+    inputState.add(LoadingState(
+        stateRendererType: StateRendererType.popupLoadingState));
+    (await _loginUseCase.execute(
+            LoginUseCaseInput(loginObject.userName, loginObject.password)))
+        .fold((left) {
+      print('=========llllllllll=====$left');
+
+      inputState.add(ErrorState(StateRendererType.popupErrorState, left.message));
+    }, (right) {
+          print('=======rrrrrrrrrrrrrr=======$right');
+      inputState.add(ContentState());
+
+    isUsedLoggerInSuccessStreamController.add(true);
+    });
   }
 
   @override
   setPassword(String password) {
     inputPassword.add(password);
     loginObject = loginObject.copyWith(password: password);
+
     ///check to pass  in first
     inputAreAllInputValid.add(null);
   }
@@ -122,5 +138,5 @@ abstract class LoginViewModelOutputs {
 
   Stream<bool> get outputPasswordValid;
 
-  Stream<void> get outAreAllInputValid;
+  Stream<bool> get outAreAllInputValid;
 }

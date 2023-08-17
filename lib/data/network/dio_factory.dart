@@ -23,7 +23,7 @@ class DioFactory {
 
   ///duration//
   Duration duration =
-      const Duration(milliseconds: Constant.duration); // a min time out
+      const Duration(minutes: Constant.duration); // a min time out
 
   Future<Dio> getDio() async {
     Dio dio = Dio();
@@ -40,8 +40,10 @@ class DioFactory {
     dio.options = BaseOptions(
         baseUrl: Constant.baseUrl,
         headers: headers,
-        receiveTimeout: duration,
-        sendTimeout: duration);
+      //  receiveTimeout: duration,
+        //receiveDataWhenStatusError: true,
+      //  sendTimeout: duration
+    );
 
     ///sec 61//
     if (!kReleaseMode) {
@@ -49,6 +51,7 @@ class DioFactory {
         requestHeader: true,
         requestBody: true,
         responseHeader: true,
+        responseBody: true
       ));
     }
     return dio;

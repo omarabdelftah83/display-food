@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:mina/app/di.dart';
 import 'package:mina/domain/entitiy/entity.dart';
 import 'package:mina/presention/onBoarding/view/on_pearding_page_body.dart';
 import 'package:mina/presention/resources/image_path.dart';
@@ -8,6 +9,7 @@ import 'package:mina/presention/resources/string_manager.dart';
 import 'package:mina/presention/resources/valuies_manager.dart';
 import 'package:mina/presention/widget/slider_obj.dart';
 
+import '../../../app/app_preference.dart';
 import '../viewModel/onboarding_viewmodel.dart';
 
 class onBoardingView extends StatefulWidget {
@@ -19,7 +21,7 @@ class onBoardingView extends StatefulWidget {
 
 class _onBoardingViewState extends State<onBoardingView> {
   //final OnBoardingViewModel _viewModel= OnBoardingViewModel();
-
+  final AppPreferences _appPreferences=instance<AppPreferences>();
   late PageController _pageController = PageController();
   late final List<SliderObj> _list = _getSliderObj();
 
@@ -40,6 +42,7 @@ class _onBoardingViewState extends State<onBoardingView> {
 
   @override
   void initState() {
+    _appPreferences.setOnBoardingScreenView();
     _pageController = PageController(initialPage: 0);
     //  _bind();
   }

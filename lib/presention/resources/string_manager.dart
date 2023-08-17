@@ -25,4 +25,13 @@ class AppString {
   static const login = "Login";
   static const forgetPassword = "Forget password";
   static const registerText = "Not a member ? Sign up";
+  static const loading = "loading...";
+  static const retryAgain = "retryAgain";
+  static const ok = "ok";
+  static const error = "error";
+  static const empty = "empty";
+static const success='success';
+
+
+
 }

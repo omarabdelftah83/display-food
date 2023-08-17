@@ -37,7 +37,7 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
   flutter_svg:
-  retrofit: ^4.0.1
+  retrofit:
   analyzer:
   dio: ^5.3.0
   json_serializable:
@@ -47,6 +47,7 @@ dependencies:
   shared_preferences: ^2.2.0
   freezed:
   get_it:
+  lottie:
 
 dev_dependencies:
   flutter_test:
@@ -78,6 +79,9 @@ flutter:
      - assets/images/istockphoto-1282444945-612x612.jpg
      - assets/images/Small-dark-grey-circle.svg.png
      - assets/images/Circle_Davys-Grey_Solid.svg.png
+     - assets/json/loading.json
+     - assets/json/error.json
+     - assets/json/empty.json
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

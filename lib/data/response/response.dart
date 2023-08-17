@@ -44,10 +44,10 @@ class ContactResponse {
 
   ContactResponse(this.phone, this.email, this.link);
   ///from json//
-  factory ContactResponse.fromJson(Map<String, dynamic> json) =>
-      _$ContactsResponseFromJson(json);
+  factory ContactResponse.fromJson(Map<String, dynamic> json) => _$ContactResponseFromJson(json);
+
   ///toJson//
-  Map<String,dynamic> toJson() => _$ContactsResponseToJson(this);
+  Map<String,dynamic> toJson() => _$ContactResponseToJson(this);
 }
 
 @JsonSerializable()

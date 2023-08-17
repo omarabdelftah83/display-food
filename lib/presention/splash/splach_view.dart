@@ -5,6 +5,9 @@ import 'package:mina/presention/resources/font_manager.dart';
 import 'package:mina/presention/resources/image_path.dart';
 import 'package:mina/presention/resources/routes_manager.dart';
 
+import '../../app/app_preference.dart';
+import '../../app/di.dart';
+
 class SplashView extends StatefulWidget {
   const SplashView({super.key});
 
@@ -18,11 +21,31 @@ class _SplashViewState extends State<SplashView>
   late AnimationController animationController;
   late Animation<Offset> animation;
   Timer? _timer;
+  final AppPreferences _appPreferences=instance<AppPreferences>();
 
   ///Timer///
-  _startDelay() {
+  _startDelay()async {
     _timer = Timer(const Duration(seconds: 2), (){
-      Navigator.pushReplacementNamed(context, Routes.onBoardingRoute);
+
+     // Navigator.pushReplacementNamed(context, Routes.onBoardingRoute);
+
+        _appPreferences.isUserLoggedIn().then((isUserLoggedIn)=>  {
+        if(isUserLoggedIn){
+          Navigator.pushReplacementNamed(context, Routes.mainRoute),
+
+        }else{
+    _appPreferences.isBoardingScreenView().then((isBoardingScreenView) => {
+      if(isBoardingScreenView){
+        Navigator.pushReplacementNamed(context, Routes.loginRoute),
+
+      }else{
+        Navigator.pushReplacementNamed(context, Routes.onBoardingRoute),
+
+      }
+    })
+        }
+
+      });
     });
   }
 ///animation function//

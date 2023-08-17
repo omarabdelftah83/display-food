@@ -11,6 +11,9 @@ class MainView extends StatefulWidget {
 class _MainViewState extends State<MainView> {
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    print('objec==================t');
+    return const Scaffold(
+      body: Center(child: Text(' omar mohamed '),),
+    );
   }
 }
