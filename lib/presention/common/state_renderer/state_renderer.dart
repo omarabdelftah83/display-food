@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:mina/presention/resources/image_path.dart';
@@ -48,7 +49,7 @@ class StateRenderer extends StatelessWidget {
         return _getPopUpDialog(context, [
           _getAnimatedImage(ImagePath.error),
           _getMessage(message),
-          _getRetryButton(AppString.ok, context),
+          _getRetryButton(AppString.ok.tr(), context),
         ]);
         ///full screen
       case StateRendererType.fullScreenLoadingState:
@@ -60,7 +61,7 @@ class StateRenderer extends StatelessWidget {
         return _getItemsColumn([
           _getAnimatedImage(ImagePath.error),
           _getMessage(message),
-          _getRetryButton(AppString.retryAgain, context),
+          _getRetryButton(AppString.retryAgain.tr(), context),
         ]);
       case StateRendererType.fullScreenEmptyState:
         return _getItemsColumn([

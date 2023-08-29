@@ -47,6 +47,7 @@ class LoginViewModel extends BaseViewModel
     inputState.add(ContentState());
   }
 
+
   @override
   Sink get inputPassword => _passwordStreamController.sink;
 
@@ -59,19 +60,19 @@ class LoginViewModel extends BaseViewModel
   @override
   login() async {
     inputState.add(LoadingState(
-        stateRendererType: StateRendererType.popupLoadingState));
+        stateRendererType: StateRendererType.fullScreenLoadingState));
     (await _loginUseCase.execute(
             LoginUseCaseInput(loginObject.userName, loginObject.password)))
         .fold((left) {
-      print('=========llllllllll=====$left');
 
-      inputState.add(ErrorState(StateRendererType.popupErrorState, left.message));
+     // inputState.add(ErrorState(StateRendererType.popupErrorState, left.message));
     }, (right) {
-          print('=======rrrrrrrrrrrrrr=======$right');
       inputState.add(ContentState());
 
     isUsedLoggerInSuccessStreamController.add(true);
     });
+
+
   }
 
   @override

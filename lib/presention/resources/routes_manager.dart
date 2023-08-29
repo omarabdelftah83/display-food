@@ -1,12 +1,13 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:mina/presention/for_get_password/for_get_password.dart';
+import 'package:mina/presention/for_get_password/view_for_get_password.dart';
 import 'package:mina/presention/login/view/login.dart';
 import 'package:mina/presention/main/main.dart';
 import 'package:mina/presention/onBoarding/view/onboarding_view.dart';
-import 'package:mina/presention/register/register.dart';
+import 'package:mina/presention/register/view/register.dart';
 import 'package:mina/presention/resources/string_manager.dart';
 import 'package:mina/presention/splash/splach_view.dart';
-import 'package:mina/presention/store_datiles/store_detailes.dart';
+import 'package:mina/presention/store_datiles/store_detailes_view.dart';
 
 import '../../app/di.dart';
 
@@ -31,12 +32,15 @@ class RouteGenarator {
         initLoginModule();
         return MaterialPageRoute(builder: (_) => LoginView());
       case Routes.registerRoute:
+        initRegisterModule();
         return MaterialPageRoute(builder: (_) => RegisterView());
       case Routes.forgotPasswordRoute:
         return MaterialPageRoute(builder: (_) => ForGotPassword());
       case Routes.mainRoute:
+        initHomeModule();
         return MaterialPageRoute(builder: (_) => MainView());
       case Routes.storeDetailsRoute:
+        initStoreDetailsModule();
         return MaterialPageRoute(builder: (_) => StoreDetailsView());
       default:
         return unDefinedRoute();
@@ -47,7 +51,7 @@ class RouteGenarator {
     return MaterialPageRoute(
         builder: (_) => Scaffold(
               appBar: AppBar(
-                title: Text(AppString.noRouteFound),
+                title: Text(AppString.noRouteFound).tr(),
               ),
             ));
   }

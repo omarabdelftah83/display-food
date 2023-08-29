@@ -48,6 +48,13 @@ dependencies:
   freezed:
   get_it:
   lottie:
+  country_code_picker:
+  image_picker:
+  rxdart: ^0.27.7
+  carousel_slider: ^4.2.1
+  flutter_phoenix: ^1.1.1
+  easy_localization: ^3.0.2
+
 
 dev_dependencies:
   flutter_test:
@@ -79,9 +86,13 @@ flutter:
      - assets/images/istockphoto-1282444945-612x612.jpg
      - assets/images/Small-dark-grey-circle.svg.png
      - assets/images/Circle_Davys-Grey_Solid.svg.png
+     - assets/images/images.jpg
      - assets/json/loading.json
      - assets/json/error.json
      - assets/json/empty.json
+     - assets/translation/ar-SA.json
+     - assets/translation/en-US.json
+
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

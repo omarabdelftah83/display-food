@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:mina/app/di.dart';
@@ -26,13 +27,13 @@ class _onBoardingViewState extends State<onBoardingView> {
   late final List<SliderObj> _list = _getSliderObj();
 
   List<SliderObj> _getSliderObj() => [
-        SliderObj(AppString.onBoardingTitle1, AppString.onBoardingSubTitle1,
+        SliderObj(AppString.onBoardingTitle1.tr(), AppString.onBoardingSubTitle1.tr(),
             ImagePath.onBoardingLogo1),
-        SliderObj(AppString.onBoardingTitle2, AppString.onBoardingSubTitle2,
+        SliderObj(AppString.onBoardingTitle2.tr(), AppString.onBoardingSubTitle2.tr(),
             ImagePath.onBoardingLogo1),
-        SliderObj(AppString.onBoardingTitle3, AppString.onBoardingSubTitle3,
+        SliderObj(AppString.onBoardingTitle3.tr(), AppString.onBoardingSubTitle3.tr(),
             ImagePath.onBoardingLogo1),
-        SliderObj(AppString.onBoardingTitle4, AppString.onBoardingSubTitle4,
+        SliderObj(AppString.onBoardingTitle4.tr(), AppString.onBoardingSubTitle4.tr(),
             ImagePath.onBoardingLogo1),
       ];
 
@@ -89,7 +90,7 @@ class _onBoardingViewState extends State<onBoardingView> {
                   child: const Text(
                     AppString.skip,
                     textAlign: TextAlign.end,
-                  ),
+                  ).tr(),
                 ),
               ),
               Row(

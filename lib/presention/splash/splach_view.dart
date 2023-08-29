@@ -34,7 +34,7 @@ class _SplashViewState extends State<SplashView>
           Navigator.pushReplacementNamed(context, Routes.mainRoute),
 
         }else{
-    _appPreferences.isBoardingScreenView().then((isBoardingScreenView) => {
+                  _appPreferences.isBoardingScreenView().then((isBoardingScreenView) => {
       if(isBoardingScreenView){
         Navigator.pushReplacementNamed(context, Routes.loginRoute),
 

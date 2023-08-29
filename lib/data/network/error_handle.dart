@@ -1,5 +1,8 @@
 import 'package:dio/dio.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:mina/data/network/falier.dart';
+
+import '../../presention/resources/string_manager.dart';
 
 enum DataSource {
   SUCCESS,
@@ -37,27 +40,28 @@ class ResponseCode {
 }
 
 class ResponseMessage {
-  static const String SUCCESS = "success"; // success with data
-  static const String NO_CONTENT =
-      "success"; // success with no data (no content)
-  static const String BAD_REQUEST =
-      "Bad request, Try again later"; // failure, API rejected request
-  static const String UNAUTORISED =
-      "User is unauthorised, Try again later"; // failure, user is not authorised
-  static const String FORBIDDEN =
-      "Forbidden request, Try again later"; //  failure, API rejected request
-  static const String INTERNAL_SERVER_ERROR =
-      "Some thing went wrong, Try again later"; // failure, crash in server side
+  static  String SUCCESS = AppString.success.tr(); // success with data
+  static  String NO_CONTENT =
+      AppString.success.tr(); // success with no data (no content)
+  static  String BAD_REQUEST =
+      AppString.badRequestError.tr(); // failure, API rejected request
+  static  String UNAUTORISED =
+      AppString.unauthorizedError.tr(); // failure, user is not authorised
+  static  String FORBIDDEN =
+      AppString.forbiddenError.tr(); //  failure, API rejected request
+  static  String INTERNAL_SERVER_ERROR =
+      AppString.internalServerError.tr(); // failure, crash in server side
+  static  String NOT_FOUND =
+      AppString.notFoundError.tr(); // failure, crash in server side
 
   // local status code
-  static const String CONNECT_TIMEOUT = "Time out error, Try again later";
-  static const String CANCEL = "Request was cancelled, Try again later";
-  static const String RECIEVE_TIMEOUT = "Time out error, Try again later";
-  static const String SEND_TIMEOUT = "Time out error, Try again later";
-  static const String CACHE_ERROR = "Cache error, Try again later";
-  static const String NO_INTERNET_CONNECTION =
-      "Please check your internet connection";
-  static const String DEFAULT = "Some thing went wrong, Try again later";
+  static const String CONNECT_TIMEOUT = AppString.timeoutError;
+  static const String CANCEL = AppString.defaultError;
+  static const String RECIEVE_TIMEOUT = AppString.timeoutError;
+  static const String SEND_TIMEOUT = AppString.timeoutError;
+  static const String CACHE_ERROR = AppString.cacheError;
+  static const String NO_INTERNET_CONNECTION = AppString.noInternetError;
+  static const String DEFAULT = AppString.defaultError;
 }
 
 extension DataSourseExtension on DataSource {

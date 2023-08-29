@@ -46,7 +46,7 @@ ThemeData getAppTheme() {
       inputDecorationTheme: const InputDecorationTheme(
         contentPadding: EdgeInsets.all(AppPadding.p8),
         labelStyle: TextStyle(color: Colors.grey, fontSize: FontSize.s14),
-        hintStyle: TextStyle(color: Colors.blue, fontSize: FontSize.s14),
+        hintStyle: TextStyle(color: Colors.orangeAccent, fontSize: FontSize.s14),
         errorStyle: TextStyle(
           color: Colors.red,
         ),
@@ -62,7 +62,7 @@ ThemeData getAppTheme() {
 
         ///focusedBorder//
         focusedBorder: OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.grey, width: 1.5),
+            borderSide: BorderSide(color: Colors.orangeAccent, width: 1.5),
             borderRadius: BorderRadius.all(Radius.circular(8))),
 
 

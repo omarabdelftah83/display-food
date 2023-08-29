@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:mina/presention/common/state_renderer/state_renderer.dart';
+import 'package:rxdart/rxdart.dart';
 
 import '../common/state_renderer/state_renderer_imp.dart';
 
@@ -8,7 +9,7 @@ abstract class BaseViewModel extends BaseViewModelInput
     with BaseViewModelOutput {
   ///stream to  state renderer//
   final StreamController _inputStreamController =
-      StreamController<FlowState>.broadcast();
+  BehaviorSubject<FlowState>();
 
   @override
   void dispose() {

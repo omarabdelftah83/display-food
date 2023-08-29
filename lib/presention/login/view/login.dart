@@ -1,5 +1,6 @@
 import 'dart:developer';
 
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:mina/app/di.dart';
@@ -49,10 +50,13 @@ class _LoginViewState extends State<LoginView> {
 
   @override
   void initState() {
+   // _appPreferences.setUserLoggedIn();
+
     // TODO: implement initState
     super.initState();
     _bind();
   }
+
   @override
   void dispose() {
     super.dispose();
@@ -66,8 +70,8 @@ class _LoginViewState extends State<LoginView> {
         body: StreamBuilder<FlowState>(
             stream: _viewModel.outputState,
             builder: (context, snapShot) {
-
-               return snapShot.data?.getScreenWidget(context, _getContentWidget(), () {
+              return snapShot.data
+                      ?.getScreenWidget(context, _getContentWidget(), () {
                     _viewModel.login();
                   }) ??
                   _getContentWidget();
@@ -150,7 +154,7 @@ class _LoginViewState extends State<LoginView> {
                                       _viewModel.login();
                                     }
                                   : null,
-                              child: const Text(AppString.login)),
+                              child:  Text(AppString.login).tr()),
                         );
                       }),
                 ),
@@ -169,7 +173,7 @@ class _LoginViewState extends State<LoginView> {
                             Navigator.pushReplacementNamed(
                                 context, Routes.forgotPasswordRoute);
                           },
-                          child: Text(AppString.forgetPassword,
+                          child: Text(AppString.forgetPassword.tr(),
                               style: Theme.of(context).textTheme.titleMedium),
                         ),
                         TextButton(
@@ -178,7 +182,7 @@ class _LoginViewState extends State<LoginView> {
                                 context, Routes.registerRoute);
                           },
                           child: Text(
-                            AppString.registerText,
+                            AppString.registerText.tr(),
                             style: Theme.of(context).textTheme.titleMedium,
                           ),
                         )
@@ -189,6 +193,4 @@ class _LoginViewState extends State<LoginView> {
           )),
     );
   }
-
-
 }
