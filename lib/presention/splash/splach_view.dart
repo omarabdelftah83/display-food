@@ -27,25 +27,25 @@ class _SplashViewState extends State<SplashView>
   _startDelay()async {
     _timer = Timer(const Duration(seconds: 2), (){
 
-     // Navigator.pushReplacementNamed(context, Routes.onBoardingRoute);
+      Navigator.pushReplacementNamed(context, Routes.onBoardingRoute);
 
-        _appPreferences.isUserLoggedIn().then((isUserLoggedIn)=>  {
-        if(isUserLoggedIn){
-          Navigator.pushReplacementNamed(context, Routes.mainRoute),
-
-        }else{
-                  _appPreferences.isBoardingScreenView().then((isBoardingScreenView) => {
-      if(isBoardingScreenView){
-        Navigator.pushReplacementNamed(context, Routes.loginRoute),
-
-      }else{
-        Navigator.pushReplacementNamed(context, Routes.onBoardingRoute),
-
-      }
-    })
-        }
-
-      });
+    //     _appPreferences.isUserLoggedIn().then((isUserLoggedIn)=>  {
+    //     if(isUserLoggedIn){
+    //       Navigator.pushReplacementNamed(context, Routes.mainRoute),
+    //
+    //     }else{
+    //               _appPreferences.isBoardingScreenView().then((isBoardingScreenView) => {
+    //   if(isBoardingScreenView){
+    //     Navigator.pushReplacementNamed(context, Routes.loginRoute),
+    //
+    //   }else{
+    //     Navigator.pushReplacementNamed(context, Routes.onBoardingRoute),
+    //
+    //   }
+    // })
+    //     }
+    //
+    //   });
     });
   }
 ///animation function//

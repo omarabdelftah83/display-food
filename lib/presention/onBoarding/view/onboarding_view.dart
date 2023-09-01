@@ -30,11 +30,11 @@ class _onBoardingViewState extends State<onBoardingView> {
         SliderObj(AppString.onBoardingTitle1.tr(), AppString.onBoardingSubTitle1.tr(),
             ImagePath.onBoardingLogo1),
         SliderObj(AppString.onBoardingTitle2.tr(), AppString.onBoardingSubTitle2.tr(),
-            ImagePath.onBoardingLogo1),
+            ImagePath.onBoardingLogo2),
         SliderObj(AppString.onBoardingTitle3.tr(), AppString.onBoardingSubTitle3.tr(),
-            ImagePath.onBoardingLogo1),
+            ImagePath.onBoardingLogo3),
         SliderObj(AppString.onBoardingTitle4.tr(), AppString.onBoardingSubTitle4.tr(),
-            ImagePath.onBoardingLogo1),
+            ImagePath.onBoardingLogo4),
       ];
 
   // _bind(){
